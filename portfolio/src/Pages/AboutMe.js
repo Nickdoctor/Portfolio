@@ -5,16 +5,11 @@ const AboutMePage = () =>{
 
     const navigate = useNavigate();
 
-    const handleHome = () => {
-        navigate("/");
-      };
-
     return (
          <div>
             <p>
                 Hello Test for about me page!!
             </p>
-            <button onClick={handleHome}> Home Page </button>
          </div>
     );
 }

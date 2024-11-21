@@ -5,10 +5,6 @@ const PortfolioPage = () =>{
 
     const navigate = useNavigate();
 
-    const handleHome = () => {
-        navigate("/");
-    };
-
     const handleGitHub = () => {
         window.open('https://github.com/Nickdoctor', '_blank');
     };
@@ -22,7 +18,6 @@ const PortfolioPage = () =>{
             <p>
                 Hello Test for Portfolio page!!
             </p>
-            <button onClick={handleHome}> Home Page </button>
             <button onClick={handleGitHub}> Github </button>
             <button onClick={handleLinkedIn}> Linked In </button>
          </div>
