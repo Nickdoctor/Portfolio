@@ -6,7 +6,7 @@ import PortfolioPage from './Pages/Portfolio.js';
 import ContactMePage from './Pages/ContactMe.js';
 
 import Navbar from './Components/Navbar.js';
-//import Footer from './Components/Footer.js';
+import Footer from './Components/Footer.js';
 
 import './App.css';
 
@@ -20,6 +20,7 @@ const App = () =>{
                         <Route path="/Portfolio" element={<PortfolioPage />} />
                         <Route path="/ContactMe" element={<ContactMePage />} />
                     </Routes>
+              <Footer/>
             </Router>
   );
 }
