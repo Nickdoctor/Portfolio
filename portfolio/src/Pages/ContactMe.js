@@ -38,6 +38,7 @@ const ContactMePage = () => {
       if (!name || !email || !message) {
         setError("All fields are required.");
         console.log('Fully fill in the field')
+        alert('Fill in all fields before sending!')
         return;
       }
   
