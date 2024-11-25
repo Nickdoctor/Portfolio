@@ -8,12 +8,13 @@ export default async function handler(req, res) {
     }
 
     const {name, email, message} = req.body;
+    const siteURL = 'https://portfolio-lac-delta-12.vercel.app/'
 
     const msg = {
         to: process.env.EMAIL,
         from: process.env.EMAIL,
         subject: `New Contact Form Submission from ${name}`, 
-        text: `Message: ${message}\n\nFrom: ${name}\nEmail: ${email}`, 
+        text: `Message: ${message}\n\nFrom: ${name}\nEmail: ${email}\n From Site: ${siteURL}`, 
     };
     try {
         await sgMail.send(msg);
