@@ -44,7 +44,7 @@ const ContactMePage = () => {
       // Reset error if validation passes
       setError('');
     try {
-        const response = await axios.post('/api/contactSend', {
+        const response = await axios.post('https://portfolio-lac-delta-12.vercel.app/api/contactSend', {
             name,
             email,
             message,

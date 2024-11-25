@@ -3,7 +3,7 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default async function handler(req, res) {
-    if (req.method !== 'Post') {
+    if (req.method !== 'POST') {
         return res.status(405).json({message: 'Error, API not post, expecting post'});
     }
 
@@ -12,8 +12,8 @@ export default async function handler(req, res) {
     const msg = {
         to: process.env.EMAIL,
         from: process.env.EMAIL,
-        subject: '`New Contact Form Submission from ${name}`',
-        text: 'Message: ${message}\n\nFrom: ${name}\nEmail: ${email}',
+        subject: `New Contact Form Submission from ${name}`, 
+        text: `Message: ${message}\n\nFrom: ${name}\nEmail: ${email}`, 
     };
     try {
         await sgMail.send(msg);
@@ -23,4 +23,4 @@ export default async function handler(req, res) {
         res.status(500).json({ message: 'Failed to send email' });
       }
     }
-    
+
