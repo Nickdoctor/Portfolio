@@ -44,7 +44,7 @@ const ContactMePage = () => {
       // Reset error if validation passes
       setError('');
     try {
-        const response = await axios.post('/api/send', {
+        const response = await axios.post('/api/contactSend', {
             name,
             email,
             message,
