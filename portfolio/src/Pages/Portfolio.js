@@ -16,6 +16,9 @@ const PortfolioPage = () =>{
     const handleLinkedIn = () => {
         window.open('https://www.linkedin.com/in/nicolas-gugliemo-5776631b9/', '_blank');
     };
+    const handleLink = (url) => {
+        window.open(url, "_blank");
+    };
 
     return (
 <div
@@ -27,17 +30,16 @@ const PortfolioPage = () =>{
                     <h2 className="card-title mb-4">Portfolio</h2>
                     <Row className="align-items-center">
                         <Col md={6}>
-                            <div>
-                                <Typography>
+                                <Typography variant="h5" sx={{ mb: 2 }}>
                                     GlambyManpreet.net
                                 </Typography>
-                            </div>
+                            <button class="btn btn-primary" onClick={() =>handleLink("https://glambymanpreet.net/")}>Link to Site</button>
                         </Col>
                         <Col md={6} className="text-center">
                             <img
                                 src={pic1}
                                 alt="Manpreet"
-                                className="img-fluid rounded shadow"
+                                className="img-fluid rounded shadow hover-effect"
                                 style={{ maxHeight: "400px" }}
                             />
                         </Col>
@@ -45,16 +47,15 @@ const PortfolioPage = () =>{
                             <img
                                 src={pic2}
                                 alt="fire"
-                                className="img-fluid rounded shadow"
+                                className="img-fluid rounded shadow hover-effect"
                                 style={{ maxHeight: "400px" }}
                             />
                         </Col>
                         <Col md={6}>
-                            <div>
-                                <Typography>
+                                <Typography variant="h5" sx={{ mb: 2 }}>
                                     Fire detection using computer vision
                                 </Typography>
-                            </div>
+                                <button class="btn btn-primary" onClick={() =>handleLink("https://www.linkedin.com/feed/update/urn:li:activity:7266877136404131840/")}> Link to Paper</button>
                         </Col>
                     </Row>
                 </div>
