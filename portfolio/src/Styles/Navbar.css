@@ -1,0 +1,28 @@
+.navbar .nav-link.btn {
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the button */
+    text-transform: uppercase; /* Uppercase text */
+    font-weight: bold; /* Bold text */
+  }
+  
+  .navbar .nav-link.btn:hover {
+    background-color: #0056b3; /* Darken background on hover */
+    color: white; /* White text on hover */
+  }
+/* Custom style for Navbar.Brand */
+.navbar .navbar-brand {
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the button */
+    font-family: 'Arial', sans-serif; /* Custom font family */
+    font-weight: bold; /* Make the brand name bold */
+    font-size: 30px; /* Larger font size */
+    color: #007bff; /* Custom color */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 2px; /* Adds space between letters */
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+  
+  .navbar .navbar-brand:hover {
+    background-color: #0056b3; /* Darken background on hover */
+    color: white; /* White text on hover */
+  }
