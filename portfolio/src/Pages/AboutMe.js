@@ -40,7 +40,7 @@ const AboutMePage = () => {
                             <img
                                 src={pic1}
                                 alt="About Me"
-                                className="img-fluid rounded shadow"
+                                className="img-fluid rounded shadow hover-effect"
                                 style={{ maxHeight: "400px" }}
                             />
                         </Col>

@@ -4,6 +4,7 @@ import { useNavigate} from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import pic1 from "../Assets/Manpreet.png";
 import pic2 from "../Assets/fire.png";
+import pic3 from "../Assets/HFS.png";
 
 const PortfolioPage = () =>{
 
@@ -56,6 +57,21 @@ const PortfolioPage = () =>{
                                     Fire detection using computer vision
                                 </Typography>
                                 <button class="btn btn-primary" onClick={() =>handleLink("https://www.linkedin.com/feed/update/urn:li:activity:7266877136404131840/")}> Link to Paper</button>
+                        </Col> 
+                        <Col md={6}> 
+                                <Typography variant="h5" sx={{ mb: 2 }}>
+                                    HFSSoft
+                                    Software Engineer Internship 2024
+                                </Typography>
+                            <button class="btn btn-primary" onClick={() =>handleLink("https://www.hfssoft.com/")}>Link to Site</button>
+                        </Col>
+                        <Col md={6} className="text-center">
+                            <img
+                                src={pic3}
+                                alt="HFS"
+                                className="img-fluid rounded shadow hover-effect"
+                                style={{ maxHeight: "400px"  }}
+                            />
                         </Col>
                     </Row>
                 </div>
