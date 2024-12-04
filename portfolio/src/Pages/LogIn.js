@@ -71,7 +71,7 @@ const LogInPage = () => {
             setError('Login failed. Please check your credentials.'); // Generic error message
         } finally {
             setLoading(false);
-            console.log('Sign In Success');
+            console.log('Sign In Success!');
             navigate('/');
         }
       };
