@@ -47,7 +47,7 @@ const LogInPage = () => {
             if (error) throw error; // Handle error if sign-in fails
       
             // Check if formData.email is in the admin table
-            /* 
+            
             const { data: adminData, error: adminError } = await supabase
                 .from('admin')
                 .select('email')
@@ -60,12 +60,12 @@ const LogInPage = () => {
                 setError('Unable to verify admin status.');
             } else if (adminData && adminData.length > 0) {
                 // Redirect to admin page if the email is found in the admin table
-                navigate('/admin');
+                navigate('/ContactMe');
             } else {
                 // Redirect to user view page if email is not found in admin table
-                navigate('/userview');
+                navigate('/');
             }
-                */
+                
         } catch (error) {
             console.error('Login failed:', error); // Log the complete error object
             setError('Login failed. Please check your credentials.'); // Generic error message
