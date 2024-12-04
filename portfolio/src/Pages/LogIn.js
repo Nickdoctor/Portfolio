@@ -65,8 +65,6 @@ const LogInPage = () => {
             } else {
                 // Redirect to user view page if email is not found in admin table
                 console.log('Not an admin, redirecting to home page.');
-                console.log('Admin Data:', adminData);
-                console.log('Form Email:', formData.email);
                 navigate('/');
             }
                 
@@ -76,7 +74,6 @@ const LogInPage = () => {
         } finally {
             console.log('Log in process over');
             setLoading(false);
-            navigate('/');
         }
       };
 
