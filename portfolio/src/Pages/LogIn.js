@@ -51,7 +51,7 @@ const LogInPage = () => {
             const { data: adminData, error: adminError } = await supabase
                 .from('admin')
                 .select('email')
-                .eq('email', formData.email);
+                .eq('email'.toLowerCase(), formData.email.toLowerCase());
                 console.log('Admin Data:', adminData); // Debug log for admin data
                 console.log('Form Data Email:', formData.email); // Debug log for formData.email
       
@@ -64,7 +64,9 @@ const LogInPage = () => {
                 navigate('/ContactMe');
             } else {
                 // Redirect to user view page if email is not found in admin table
-                console.log('Not an admin, redirecting to user page.');
+                console.log('Not an admin, redirecting to home page.');
+                console.log('Admin Data:', adminData);
+                console.log('Form Email:', formData.email);
                 navigate('/');
             }
                 
@@ -72,7 +74,7 @@ const LogInPage = () => {
             console.error('Login failed:', error); // Log the complete error object
             setError('Login failed. Please check your credentials.'); // Generic error message
         } finally {
-            console.log('Sign In Success!');
+            console.log('Log in process over');
             setLoading(false);
             navigate('/');
         }
