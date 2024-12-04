@@ -52,11 +52,31 @@ const HomePage = () =>{
   if (loading) {
       return <p>Loading...</p>;
   }
+
+  const handleSignOut = async () => {
+    try {
+        // Call Supabase sign-out method
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
+
+        // Optionally clear any local state here
+        console.log('User signed out successfully');
+        
+        // Redirect user to login or home page
+        navigate('/login');
+    } catch (error) {
+        console.error('Error signing out:, could be signed out already?', error.message);
+    }
+};
+
     return (
          <div>
            <Typography align='center' className="text-success">
-            Work in progress!! Feel free to look around! You are not logged In
+            Work in progress!! Feel free to look around! You can try to log in!
            </Typography>
+           <button onClick={handleSignOut}>
+            Sign Out (Will clear session)
+          </button>
            {userRole === 'admin' && <Typography>You are an admin</Typography>}
            {userRole === 'user' && <Typography>You are a user</Typography>}
 
