@@ -60,9 +60,11 @@ const LogInPage = () => {
                 setError('Unable to verify admin status.');
             } else if (adminData && adminData.length > 0) {
                 // Redirect to admin page if the email is found in the admin table
+                console.log('Admin found:', adminData);
                 navigate('/ContactMe');
             } else {
                 // Redirect to user view page if email is not found in admin table
+                console.log('Not an admin, redirecting to user page.');
                 navigate('/');
             }
                 
@@ -70,8 +72,8 @@ const LogInPage = () => {
             console.error('Login failed:', error); // Log the complete error object
             setError('Login failed. Please check your credentials.'); // Generic error message
         } finally {
-            setLoading(false);
             console.log('Sign In Success!');
+            setLoading(false);
             navigate('/');
         }
       };
@@ -84,7 +86,7 @@ const LogInPage = () => {
                         <div class="card border-0 shadow rounded-3 my-5 rounded shadow hover-effect">
                             <div class="card-body p-4 p-sm-5">
                                 <h5 class="card-title text-center mb-5 fw-light fs-5 ">Sign In</h5>
-                                <form>
+                                <form onSubmit={handleSubmit}>
                                     <TextField fullWidth name="email" label="Email" type="email" variant="outlined" value={formData.email} onChange={handleChange} sx={{ mt: 1, mb: 1 }} required />
                                     <div class="form-floating mb-3">
                                         <TextField fullWidth name="password" label="Password" type={formData.showPassword ? "text" : "password"} variant="outlined" value={formData.password} onChange={handleChange}
