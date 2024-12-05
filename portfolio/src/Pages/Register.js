@@ -33,7 +33,23 @@ const RegisterPage = () => {
       [name]: value,
     }));
   };
-
+  const handleGoogleSignIn = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+      });
+  
+      if (error) {
+        console.error('Google Sign-In Error:', error.message);
+        return;
+      }
+  
+      // Optional: Redirect user to home or dashboard
+      console.log('Google sign-in successful:', data);
+    } catch (error) {
+      console.error('Unexpected error during Google sign-in:', error);
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -96,7 +112,7 @@ const RegisterPage = () => {
                   </div>
                   <hr class="my-4" />
                   <div class="d-grid mb-2">
-                    <button class="btn btn-google btn-login text-uppercase fw-bold" type="submit">
+                    <button class="btn btn-google btn-login text-uppercase fw-bold" onClick= {handleGoogleSignIn}>
                       <i class="fab fa-google me-2"></i> Sign Up with Google
                     </button>
                   </div>
