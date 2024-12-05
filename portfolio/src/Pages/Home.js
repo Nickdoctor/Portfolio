@@ -79,9 +79,6 @@ const HomePage = () =>{
            <Typography align='center' className="text-success">
             Work in progress!! Feel free to look around! You can try to log in!
            </Typography>
-           <button onClick={handleSignOut}>
-            Sign Out (Will clear session)
-          </button>
            {userRole === 'admin' && <Typography>You are an admin, Welcome back Nick</Typography>}
            {userRole === 'user' && <Typography>You are a user, welcome {FirstName} {LastName} </Typography>} 
            
