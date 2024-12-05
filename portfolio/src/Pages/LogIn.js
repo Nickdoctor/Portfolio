@@ -64,12 +64,16 @@ const LogInPage = () => {
                 navigate('/ContactMe');
             } else {
                 // Redirect to user view page if email is not found in admin table
+                const { data: { user }, error } = await supabase.auth.getUser();
                 console.log('Not an admin, redirecting to home page.');
+                console.log('First Name:', user.user_metadata.FirstName);
+                console.log('Last Name:', user.user_metadata.LastName);
                 navigate('/');
             }
                 
         } catch (error) {
             console.error('Login failed:', error); // Log the complete error object
+            alert('Invalid Log in, try again.')
             setError('Login failed. Please check your credentials.'); // Generic error message
         } finally {
             console.log('Log in process over');
@@ -111,11 +115,6 @@ const LogInPage = () => {
                                     <div class="d-grid mb-2">
                                         <button class="btn btn-google btn-login text-uppercase fw-bold" type="submit">
                                             <i class="fab fa-google me-2"></i> Sign in with Google
-                                        </button>
-                                    </div>
-                                    <div class="d-grid">
-                                        <button class="btn btn-facebook btn-login text-uppercase fw-bold" type="submit">
-                                            <i class="fab fa-facebook-f me-2"></i> Sign in with Facebook
                                         </button>
                                     </div>
                                 </form>

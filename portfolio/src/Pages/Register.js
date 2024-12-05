@@ -8,47 +8,105 @@ import GoogleIcon from '@mui/icons-material/Google';
 import EmailIcon from '@mui/icons-material/Email';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-//import supabase from '../config/supabaseClient.js';
+import supabase from '../supabaseClient.js';
 
 const RegisterPage = () => {
-    return (
-<section class="vh-100" >
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card shadow-2-strong" >
-          <div class="card-body p-5 text-center">
 
-            <h3 class="mb-5">Sign in</h3>
+  const [formData, setFormData] = useState({
+    FirstName: '',
+    LastName: '',
+    email: '',
+    password: '',
+    showPassword: false,
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const handleShowPasswordClick = () => {
+    setFormData(prev => ({ ...prev, showPassword: !prev.showPassword }));
+  };
 
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="email" id="typeEmailX-2"/>
-              <label class="form-label" for="typeEmailX-2">Email</label>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      // Authenticate user
+      const { error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            FirstName: formData.FirstName,
+            LastName: formData.LastName,
+          },
+        },
+      });
+      if (error) throw error;
+      alert('Registration successful! Check your email for confirmation.');
+      navigate('/');
+    } catch (error) {
+      console.error('Sign-up failed:', error);
+      setError('Sign-up failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <body>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5 rounded shadow hover-effect">
+              <div class="card-body p-4 p-sm-5">
+                <h5 class="card-title text-center mb-5 fw-light fs-5 ">Sign Up</h5>
+                <form onSubmit={handleSubmit}>
+                <TextField fullWidth name="FirstName" label="First Name" type="text" variant="outlined" value={formData.FirstName} onChange={handleChange} sx={{ mt: 1, mb: 1 }} required />
+                <TextField fullWidth name="LastName" label="Last Name" type="text" variant="outlined" value={formData.LastName} onChange={handleChange} sx={{ mt: 1, mb: 1 }} required />
+                  <TextField fullWidth name="email" label="Email" type="email" variant="outlined" value={formData.email} onChange={handleChange} sx={{ mt: 1, mb: 1 }} required />
+                  <div class="form-floating mb-3">
+                    <TextField fullWidth name="password" label="Password" type={formData.showPassword ? "text" : "password"} variant="outlined" value={formData.password} onChange={handleChange}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton onClick={handleShowPasswordClick}>
+                              {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                          </InputAdornment>
+                        )
+                      }}
+                      sx={{ mt: 1 }}
+                      required
+                    />
+                  </div>
+                  <div class="d-grid">
+                    <Button fullWidth type="submit" variant="contained" color="primary" sx={{ mt: 3 }}>
+                      Sign Up
+                    </Button>
+                  </div>
+                  <hr class="my-4" />
+                  <div class="d-grid mb-2">
+                    <button class="btn btn-google btn-login text-uppercase fw-bold" type="submit">
+                      <i class="fab fa-google me-2"></i> Sign Up with Google
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-              <label class="form-label" for="typePasswordX-2">Password</label>
-            </div>
-
-            
-            <div class="form-check d-flex justify-content-start mb-4">
-              <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-              <label class="form-check-label" for="form1Example3"> Remember password </label>
-            </div>
-
-            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-
-            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-lg btn-block btn-primary"
-              type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
-            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-lg btn-block btn-primary mb-2"
-              type="submit"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
-
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-)};
+    </body>
+  )
+};
 export default RegisterPage;

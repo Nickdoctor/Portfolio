@@ -8,22 +8,27 @@ const HomePage = () =>{
     const navigate = useNavigate();
     const [userRole, setUserRole] = useState(null); // 'admin' or 'user'
     const [loading, setLoading] = useState(true);
-
+    const [FirstName, setFirstName] = useState('');
+    const [LastName, setLastName] = useState('');
     useEffect(() => {
       const fetchUserRole = async () => {
           try {
               setLoading(true);
-
+             
               // Get the current user
               const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
               if (sessionError) throw sessionError;
 
               const user = sessionData?.session?.user;
+              
               if (!user) {
                   setUserRole(null); // Not logged in
                   return;
               }
-
+              const FirstName = user.user_metadata?.FirstName || 'First'; // Fallback to 'User'
+                setFirstName(FirstName);
+                const LastName = user.user_metadata?.LastName || 'Last'; // Fallback to 'User'
+                setLastName(LastName);
               // Check if the user is in the admin table
               const { data: adminData, error: adminError } = await supabase
                   .from('admin')
@@ -77,8 +82,9 @@ const HomePage = () =>{
            <button onClick={handleSignOut}>
             Sign Out (Will clear session)
           </button>
-           {userRole === 'admin' && <Typography>You are an admin</Typography>}
-           {userRole === 'user' && <Typography>You are a user</Typography>}
+           {userRole === 'admin' && <Typography>You are an admin, Welcome back Nick</Typography>}
+           {userRole === 'user' && <Typography>You are a user, welcome {FirstName} {LastName} </Typography>} 
+           
 
          </div>
     );
