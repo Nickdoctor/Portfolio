@@ -76,6 +76,7 @@ const HomePage = () =>{
 
     return (
          <div>
+            <meta name="google-site-verification" content="IpJu67BQbPyZQWcrxvhD7T5cyI2SzCfhdYVyn9f9rJg" />
            <Typography align='center' className="text-success">
             Work in progress!! Feel free to look around! You can try to log in!
            </Typography>
