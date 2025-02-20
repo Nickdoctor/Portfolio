@@ -21,7 +21,7 @@ const AboutMePage = () => {
                         <Col md={6}>
                             <div>
                                 <p>
-                                    I am currently a computer science major at Sacramento State on track to graduate Fall 2024, seeking a full-time full-stack development job. I was a student at LMC on a 3-year plan to transfer for a computer science degree. I currently have an associate's in Liberal Arts: Math and Science, an associate for transfer degree for Mathematics, and graduated with honors in May of 2022. My GPA at LMC was 3.7. I have also completed the requirements for the IGETC certification and have received this certification.
+                                    I am a computer science graduate from Sacramento State that graduated Fall 2024, seeking a full-time full-stack development job or early career software development job. I was a student at Los Medanos College from Fall 2019 - Spring 2022 on a 3-year plan to transfer for a computer science degree. I transferred from LMC with my associate's in Liberal Arts: Math and Science, IGETC certification, an associate for transfer degree for Mathematics, and graduated with honors in May of 2022. My GPA at LMC was 3.7. 
                                 </p>
                                 <b>Achievements at Sacramento State University:</b>
                                 <ul className="text-start">
